@@ -1,13 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:panorama/panorama.dart';
 import 'package:take_save_display_12/blocs/theta/theta_bloc.dart';
-import 'package:take_save_display_12/screens/full_screen.dart';
-import 'package:flutter_launcher_icons/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +18,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ThetaBloc(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         color: Colors.white,
         home: BlocBuilder<ThetaBloc, ThetaState>(
           builder: (context, state) {
@@ -83,7 +81,7 @@ class MyApp extends StatelessWidget {
                               .read<ThetaBloc>()
                               .add(ImagePickerEvent(image));
                         },
-                        icon: Icon(Icons.image)),
+                        icon: const Icon(Icons.image)),
                     state.images != null
                         ? ImageWidget(myFile: File(state.images!.path))
                         : Container()
@@ -97,8 +95,8 @@ class MyApp extends StatelessWidget {
 }
 
 class ImageWidget extends StatelessWidget {
-  File myFile;
-  ImageWidget({Key? key, required this.myFile}) : super(key: key);
+  final File myFile;
+  const ImageWidget({Key? key, required this.myFile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -111,16 +109,15 @@ class ImageWidget extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => PanoramaWidget(myFile: myFile)));
-              print("changed to new screen");
             },
             child: Image.file(myFile)),
-        Icon(
+        const Icon(
           Icons.circle,
           color: Colors.black12,
           size: 65,
         ),
         InkWell(
-            child: Icon(
+            child: const Icon(
               Icons.threesixty,
               color: Colors.white,
               size: 50,
@@ -135,8 +132,8 @@ class ImageWidget extends StatelessWidget {
 }
 
 class PanoramaWidget extends StatelessWidget {
-  File myFile;
-  PanoramaWidget({Key? key, required this.myFile}) : super(key: key);
+  final File myFile;
+  const PanoramaWidget({Key? key, required this.myFile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

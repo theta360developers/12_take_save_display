@@ -1,6 +1,6 @@
 # 12. Take Save Display 
 
-A demonstration of using the RICOH THETA X camera with Android phones.
+A demonstration of using the RICOH THETA X camera with Android and IOS phones.
 
 ## Features
 
@@ -21,6 +21,8 @@ This application is built on the tutorials below.
 * THETA Concept 11 (selecting image from gallery)
 
 ![screen](docs/newscreen.gif)
+
+<img src="docs/ios.PNG" width=40%>
 
 ## Key Flutter Packages 
 
@@ -151,6 +153,10 @@ class ImagePickerEvent extends ThetaEvent {
 ```
 
 When the `IconButton` is pressed, it adds the `ImagePickerEvent` with the file from `ImagePicker`. Inside the Bloc file, the `ImagePickerEvent` updates the State with the file.
+
+<img src="docs/iospermission.PNG" width=40%>
+
+<img src="docs/iosphotos.PNG" width=40%>
 
 ## Bloc Structure
 

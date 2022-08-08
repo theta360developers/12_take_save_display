@@ -1,12 +1,9 @@
-import 'dart:io';
-import 'dart:math';
-
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'theta_event.dart';
 part 'theta_state.dart';
@@ -26,8 +23,7 @@ class ThetaBloc extends Bloc<ThetaEvent, ThetaState> {
         emit(ThetaState(message: response.body, id: id));
         while (state.cameraState != "done") {
           add(CameraStatusEvent());
-          await Future.delayed(Duration(milliseconds: 200));
-          print(state.cameraState);
+          await Future.delayed(const Duration(milliseconds: 200));
         }
       }
       add(GetFileEvent());

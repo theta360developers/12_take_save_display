@@ -18,5 +18,5 @@ class SaveFileEvent extends ThetaEvent {}
 class ImagePickerEvent extends ThetaEvent {
   final XFile image;
 
-  ImagePickerEvent(this.image);
+  const ImagePickerEvent(this.image);
 }

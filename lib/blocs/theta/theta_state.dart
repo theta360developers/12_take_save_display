@@ -9,7 +9,7 @@ class ThetaState extends Equatable {
   final bool finishedSaving;
   final XFile? images;
 
-  ThetaState(
+  const ThetaState(
       {required this.message,
       this.fileUrl = "",
       this.cameraState = "initial",
@@ -17,7 +17,8 @@ class ThetaState extends Equatable {
       this.finishedSaving = false,
       this.images});
 
-  factory ThetaState.initial() => ThetaState(message: "Response from Camera");
+  factory ThetaState.initial() =>
+      const ThetaState(message: "Response from Camera");
 
   @override
   List<dynamic> get props =>
